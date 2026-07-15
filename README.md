@@ -1,36 +1,171 @@
 # CamStudio Pro
 
-> A macOS screen recording application built with Electron — CamStudio Pro.
+> macOS 屏幕录制工具 — 基于 Electron 构建的高性能录屏软件
 
-## Overview
+---
 
-CamStudio Pro is a screen recording tool for macOS, featuring:
+## 📖 简介
 
-- 🎥 Full-screen or region-based screen recording
-- 🎤 Audio capture (microphone + system audio)
-- 🖥️ Camera overlay support
-- ⚡ High-performance Electron-based architecture
-- 🎬 Multiple output formats
+CamStudio Pro 是一款专为 macOS 设计的屏幕录制软件，采用 Electron 框架构建。支持全屏录制、区域录制、音频采集（麦克风 + 系统声音）、摄像头画中画叠加等功能，适用于教学演示、游戏录制、视频会议记录等多种场景。
 
-## Requirements
+---
 
-- macOS 11.0 (Big Sur) or later
-- Approximately 250MB of disk space
+## 🎯 功能特点
 
-## Installation
+### 录制功能
+- 🖥️ **全屏录制** — 一键录制整个屏幕内容
+- 📐 **区域录制** — 自由选择屏幕任意区域进行录制
+- 🎤 **音频采集** — 同时录制麦克风声音和系统音频
+- 📷 **摄像头叠加** — 支持摄像头画中画（PIP）模式
+- ⏸️ **暂停/继续** — 录制过程中可随时暂停和恢复
+- ⏹️ **停止保存** — 录制完成后自动保存视频文件
 
-1. Download `CamStudio Pro.app`
-2. Move to your Applications folder
-3. Open normally (Gatekeeper may ask for confirmation)
+### 输出格式
+- 🎬 支持多种视频编码格式
+- ⚡ 基于硬件加速的高性能编码
+- 📦 自动选择最优输出参数
 
-## Usage
+### 用户界面
+- 🍎 **菜单栏图标** — 轻量级菜单栏常驻，不占 Dock 空间
+- ⌨️ **快捷键支持** — 键盘快捷键控制录制流程
+- 🌙 **深色模式** — 适配 macOS 深色/浅色外观
+- 🔔 **系统通知** — 录制开始/结束时有通知提示
 
-Launch the app and use the menu bar icon to control recording:
+---
 
-- **Start Recording** — Record full screen or selected region
-- **Pause/Resume** — Pause and resume during recording
-- **Stop** — Finish recording and save the file
+## 💻 系统要求
 
-## License
+| 项目 | 要求 |
+|------|------|
+| 操作系统 | macOS 11.0 (Big Sur) 或更高版本 |
+| 处理器 | Apple Silicon (M1/M2/M3/M4) 或 Intel |
+| 内存 | 推荐 8GB 及以上 |
+| 磁盘空间 | 约 250MB（安装）+ 视频文件额外空间 |
+| 权限 | 屏幕录制权限、麦克风权限（如需录制音频） |
+
+---
+
+## 📥 安装方法
+
+### 方式一：直接下载
+
+1. 下载 `CamStudio Pro.app`
+2. 将 `.app` 文件拖入 **应用程序 (Applications)** 文件夹
+3. 首次打开时，如果 Gatekeeper 提示阻止，前往：
+   **系统设置 → 隐私与安全性 → 仍要打开**
+4. 授予必要的权限：
+   - **屏幕录制** — 系统设置 → 隐私与安全性 → 屏幕录制 → 勾选 CamStudio Pro
+   - **麦克风** — 系统设置 → 隐私与安全性 → 麦克风 → 勾选 CamStudio Pro（如需录制音频）
+
+### 方式二：从源码构建
+
+```bash
+# 克隆仓库
+git clone https://github.com/JZQiang/CamStudio-Pro.git
+cd CamStudio-Pro
+
+# 安装依赖
+npm install
+
+# 构建应用
+npm run build
+
+# 打包为 .app
+npm run pack
+```
+
+---
+
+## 🎮 使用指南
+
+### 快速开始
+
+1. **启动应用** — 双击 `CamStudio Pro.app` 启动
+2. **菜单栏图标** — 应用启动后在菜单栏右侧会显示 🎬 图标
+3. **选择模式** — 点击菜单栏图标，选择录制模式：
+   - `录制全屏` — 录制整个屏幕
+   - `录制区域` — 拖动选择要录制的区域
+4. **开始录制** — 点击「开始录制」按钮或使用快捷键
+5. **停止录制** — 点击菜单栏图标选择「停止」，视频自动保存到桌面
+
+### 快捷键
+
+| 快捷键 | 功能 |
+|--------|------|
+| `⌘+⇧+R` | 开始/停止录制 |
+| `⌘+⇧+P` | 暂停/继续录制 |
+| `⌘+⇧+Q` | 退出应用 |
+
+### 高级设置
+
+点击菜单栏图标 → **偏好设置** 可调整：
+- 视频输出质量（高清/标准/流畅）
+- 录制帧率（30fps / 60fps）
+- 视频保存路径
+- 是否录制系统声音
+- 是否启用摄像头画中画
+- 快捷键自定义
+
+---
+
+## 🛠️ 技术架构
+
+```
+CamStudio Pro.app/
+├── Contents/
+│   ├── MacOS/
+│   │   └── CamStudio Pro          # 主程序入口
+│   ├── Resources/
+│   │   ├── app.asar               # Electron 打包的应用代码
+│   │   └── icon.icns              # 应用图标
+│   ├── Frameworks/
+│   │   ├── Electron Framework.framework/  # Electron 运行时
+│   │   ├── Squirrel.framework/           # 自动更新框架
+│   │   ├── Mantle.framework/             # 模型层框架
+│   │   └── ReactiveObjC.framework/       # 响应式编程框架
+│   ├── Info.plist                 # 应用配置清单
+│   └── PkgInfo                    # 包类型标识
+```
+
+### 核心技术
+
+- **框架：** Electron（Chromium + Node.js）
+- **录屏 API：** ScreenCaptureKit（macOS 原生）
+- **音频捕获：** CoreAudio（macOS 原生）
+- **视频编码：** 硬件加速（VideoToolbox）
+- **自动更新：** Squirrel 框架
+
+---
+
+## ❓ 常见问题
+
+### Q: 录制的视频保存在哪里？
+默认保存在 **桌面** 文件夹，可在偏好设置中修改保存路径。
+
+### Q: 为什么无法录制系统声音？
+需要在 **系统设置 → 隐私与安全性 → 屏幕录制** 中授予 CamStudio Pro 权限，同时确保偏好设置中「录制系统声音」已开启。
+
+### Q: 录制的视频占用空间很大怎么办？
+在偏好设置中调整输出质量为「标准」或「流畅」模式，或降低帧率到 30fps。
+
+### Q: 应用无法打开/闪退怎么办？
+1. 确认 macOS 版本 ≥ 11.0
+2. 尝试重新下载并安装
+3. 检查是否被 Gatekeeper 拦截
+4. 查看系统控制台应用中的崩溃日志
+
+### Q: 如何卸载？
+将 `CamStudio Pro.app` 从应用程序文件夹移到废纸篓即可。
+
+---
+
+## 📄 许可
 
 Copyright © 2026 CamStudio Pro. All rights reserved.
+
+---
+
+## 🔗 相关链接
+
+- **GitHub 仓库：** https://github.com/JZQiang/CamStudio-Pro
+- **问题反馈：** 请在 GitHub Issues 中提交
