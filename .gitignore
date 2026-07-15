@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Electron app binaries - too large for GitHub
+# The .app bundle is ~233MB, so we track it with Git LFS
+# or just push the whole .app via LFS
+
+# Node modules (if any source repo)
+node_modules/
